@@ -1,0 +1,21 @@
+#textarea {
+    background-color: blue;
+    resize: none;
+    height: 100%;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+#current-line {
+    display: flex;
+    justify-content: left;
+    padding-top: 0px;
+    margin-top: 0px;
+    height: 15px;
+}
+
+#line-default {
+    width: auto;
+    padding-top: 0px;
+    margin-top: 0px;
+}

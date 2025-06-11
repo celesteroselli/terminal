@@ -1,21 +1,61 @@
+:root {
+    --font-size: 17px;
+    --line-space: 12px;
+  }
+
+body {
+    background-color: black;
+    font-family: monospace;
+    color: white;
+    font-size: var(--font-size);
+}
+
 #textarea {
-    background-color: blue;
     resize: none;
     height: 100%;
     padding-top: 0px;
     margin-top: 0px;
+    color: white;
+    display: inline;
+    field-sizing: content;
+    background-color: black;
+    border-color: transparent;
+    outline: none;
+    font-size: var(--font-size);
+    position: relative;
+    bottom: 7px;
 }
 
 #current-line {
     display: flex;
     justify-content: left;
-    padding-top: 0px;
     margin-top: 0px;
-    height: 15px;
+    padding-top: var(--line-space);
+    height: var(--font-size);
+    background-color: blue;
+}
+
+#caret {
+    position: relative;
+    bottom: 13px;
+    right: 10px;
+    color: white;
+    font-size: var(--font-size);
+}
+
+#current-text {
+    line-height: calc(var(--font-size) + var(--line-space));
+    background-color: red;
 }
 
 #line-default {
     width: auto;
     padding-top: 0px;
     margin-top: 0px;
+    position: relative;
+    bottom: 7px;
 }
+
+textarea:focus {
+    caret-color: transparent;
+  }

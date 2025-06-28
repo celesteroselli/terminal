@@ -1,12 +1,13 @@
 :root {
     --font-size: 17px;
     --line-space: 12px;
+    --color: rgb(102, 255, 0);
   }
 
 body {
     background-color: black;
     font-family: monospace;
-    color: white;
+    color: var(--color);
     font-size: var(--font-size);
 }
 
@@ -15,7 +16,7 @@ body {
     height: 100%;
     padding-top: 0px;
     margin-top: 0px;
-    color: white;
+    color: var(--color);
     display: inline;
     field-sizing: content;
     background-color: black;
@@ -23,7 +24,8 @@ body {
     outline: none;
     font-size: var(--font-size);
     position: relative;
-    bottom: 7px;
+    bottom: 8.5px;
+    right: 3px;
 }
 
 #current-line {
@@ -32,20 +34,18 @@ body {
     margin-top: 0px;
     padding-top: var(--line-space);
     height: var(--font-size);
-    background-color: blue;
 }
 
 #caret {
     position: relative;
     bottom: 13px;
-    right: 10px;
-    color: white;
+    right: 17px;
+    color: var(--color);
     font-size: var(--font-size);
 }
 
 #current-text {
     line-height: calc(var(--font-size) + var(--line-space));
-    background-color: red;
 }
 
 #line-default {
@@ -53,9 +53,30 @@ body {
     padding-top: 0px;
     margin-top: 0px;
     position: relative;
-    bottom: 7px;
+    bottom: 7.5px;
 }
 
 textarea:focus {
     caret-color: transparent;
   }
+
+#top-text {
+    line-height: calc(var(--font-size) + var(--line-space));
+}
+
+a {
+    color: var(--color)
+}
+
+a:link,  /* unvisited link */
+a:visited,  /* visited link */
+a:hover,  /* mouse over link */
+a:active,  /* selected link */
+a:focus {  /* link with keyboard focus */
+  color: var(--color);  /* Replace with your desired color (e.g., black) */
+  text-decoration: none; /*  Optional: removes the underline */
+}
+
+#color-white {
+    color: white;
+}

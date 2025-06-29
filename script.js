@@ -5,6 +5,8 @@ const textarea_container = document.getElementById("textarea-container");
 const caret = document.getElementById("caret");
 const datespan = document.getElementById("date");
 
+was_text = true
+
 function setTextSize() {
     var line_width = line_default.offsetWidth + 50;
     var text_width = window.innerWidth - line_width;
@@ -15,7 +17,12 @@ function setTextSize() {
 function writeText(input, isuser, type) {
     if (!(type==true)) {
         if (isuser) {
-            current_text.innerHTML = current_text.innerHTML + "<br>" + line_default.innerText + input;
+            if (was_text) {
+                current_text.innerHTML = current_text.innerHTML + line_default.innerText + input;
+                was_text = false;
+            } else {
+                current_text.innerHTML = current_text.innerHTML + "<br>" + line_default.innerText + input;
+            }
             console.log("user!!")
         } else {
             current_text.innerHTML = current_text.innerHTML + "<br>" + input;
@@ -64,6 +71,7 @@ function writeText(input, isuser, type) {
         if (i==(input.length-1)) {
             clearInterval(intervalID);
             current_text.innerHTML += "<br><br></span>";
+            was_text = true
         }
 
         i++;
@@ -88,13 +96,17 @@ function handleInput(e) {
 
     switch (temp_value) {
         case "help":
-            writeText("thx for saying help!", false, true);
+            writeText(help, false, true);
         break;
         case "bio":
             writeText(bio, false, true);
         break;
         case "projects":
             writeText(projects, false, true);
+        break;
+        case "clear":
+            current_text.innerHTML = "<p>welcome to celeste roselli's portfolio site. celeste roselli is a software developer from atlanta, georgia.<br><br>type <em>help</em> to learn more!<br></p>";
+            was_text = true;
         break;
     }
 }
@@ -141,10 +153,21 @@ projects = `Check out all of my projects at my GitHub. Here are some of my favor
 *CourtConnect:* a messaging web app utilized by Georgia state and federal courts to speed up jury selection.%
 /- *Awards: *Congressional App Challenge%
 /- *Tools: *VSCode, Railway (for deployment), Python, Django, HTML, CSS, Bootstrap%%
+
+*Oscillart:* a YSWS program for Hack Club, combining art, music, science, and technology to teach teens to make musical web apps.%
+/- *Tools: *VSCode, GitHub Codespaces, Markdown, HTML, CSS, Javascript%%
+
+*Elevator:* a quick web app made in tribute to my favorite Lemony Snicket quote. Iykyk. :)%
+/- *Tools: *VSCode, GitHub Codespaces, HTML, CSS, Javascript%%
+
+*FRC ML Vision Algorithm:* a robotics feature for First Robotics Competition using Tensorflow and Limelight Cameras to detect and automatically align robots to specific field objects.%
+/- *Awards: *First Creativity Award (x3)%
+/- *Tools: *VSCode, Java, Limelight Cameras, Tensorflow, Google Coral
 `
 
-projects = `Check out all of my projects at my GitHub. Here are some of my favorites!%%
-*CourtConnect:* a messaging web app utilized by Georgia state and federal courts to speed up jury selection.%
-/- *Awards: *Congressional App Challenge%
-/- *Tools: *VSCode, Railway (for deployment), Python, Django, HTML, CSS, Bootstrap
+help = `
+~help~ = see the list of commands%
+~bio~ = read about me!%
+~projects~ = see my favorite projects I've worked on%
+~clear~ = clear the screen
 `

@@ -5,6 +5,10 @@ const textarea_container = document.getElementById("textarea-container");
 const caret = document.getElementById("caret");
 const datespan = document.getElementById("date");
 
+const canvas = document.createElement('canvas');
+const context = canvas.getContext('2d');
+context.font = '17px Monospace';
+
 was_text = true
 
 function setTextSize() {
@@ -12,6 +16,15 @@ function setTextSize() {
     var text_width = window.innerWidth - line_width;
     textarea_container.style.width = text_width + "px";
     textarea_container.style.maxWidth = text_width + "px";
+    resize()
+}
+
+function resize() {
+    var num = textarea.value.length;
+    var metrics = context.measureText(textarea.value); // Replace 'a' with your desired character
+    var characterWidth = metrics.width;
+    console.log(characterWidth)
+    textarea.style.width=((characterWidth+15)+"px");
 }
 
 function writeText(input, isuser, type) {
